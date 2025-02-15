@@ -61,16 +61,18 @@ public class TeleopSwerve extends Command
     this.fencedSup = fencedSup;
   }
 
-    @Override
-    public void initialize()
-    {
-      redAlliance = FieldUtils.isRedAlliance();
-      SmartDashboard.putBoolean("redAlliance", redAlliance);
-      if (redAlliance)
-        {fieldGeoFence = FieldUtils.GeoFencing.fieldRedGeoFence;}
-      else
-        {fieldGeoFence = FieldUtils.GeoFencing.fieldBlueGeoFence;}
-    }
+  @Override
+  public void initialize()
+  {
+    redAlliance = FieldUtils.isRedAlliance();
+    SmartDashboard.putBoolean("redAlliance", redAlliance);
+    if (redAlliance)
+      {fieldGeoFence = FieldUtils.GeoFencing.fieldRedGeoFence;}
+    else
+      {fieldGeoFence = FieldUtils.GeoFencing.fieldBlueGeoFence;}
+
+    SmartDashboard.putBoolean("Fencing", true);
+  }
 
   @Override
   public void execute() 
@@ -87,7 +89,7 @@ public class TeleopSwerve extends Command
     
     if (fieldCentricSup.getAsBoolean())
     {
-      if (fencedSup.getAsBoolean())
+      if (fencedSup.getAsBoolean() && SmartDashboard.getBoolean("Fencing", true))
       {
         SmartDashboard.putString("Drive State", "Fenced");
 
