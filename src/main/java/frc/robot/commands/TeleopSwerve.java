@@ -71,7 +71,7 @@ public class TeleopSwerve extends Command
     else
       {fieldGeoFence = FieldUtils.GeoFencing.fieldBlueGeoFence;}
 
-    SmartDashboard.putBoolean("Fencing", true);
+    SmartDashboard.putBoolean("Fencing", false);
   }
 
   @Override
@@ -89,7 +89,7 @@ public class TeleopSwerve extends Command
     
     if (fieldCentricSup.getAsBoolean())
     {
-      if (fencedSup.getAsBoolean() && SmartDashboard.getBoolean("Fencing", true))
+      if (fencedSup.getAsBoolean() && SmartDashboard.getBoolean("Fencing", false))
       {
         SmartDashboard.putString("Drive State", "Fenced");
 
